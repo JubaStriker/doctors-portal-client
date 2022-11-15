@@ -23,7 +23,7 @@ const Navbar = () => {
         <li><Link to='/'>Appointment</Link></li>
         <li><Link to='/'>About</Link></li>
         <li><Link to='/'>Reviews</Link></li>
-        <li><Link to='/'>Login</Link></li>
+        <li><Link to='/login'>Login</Link></li>
     </>
 
 
@@ -39,15 +39,16 @@ const Navbar = () => {
                             {menuItems}
                         </ul>
                     </div>
-                    <Link to='/home' className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+                    <Link to='/home' className="btn btn-ghost normal-case text-xl">Doctors Portal</Link>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal p-0">
-                        {menuItems}
-                    </ul>
-                </div>
+
                 <div className="navbar-end">
-                    <p onClick={() => setToggleTheme(!toggleTheme)} className="btn btn-primary">Dark mode</p>
+                    <div className=" hidden lg:flex">
+                        <ul className="menu menu-horizontal p-0">
+                            {menuItems}
+                        </ul>
+                    </div>
+                    <p onClick={() => setToggleTheme(!toggleTheme)} className="btn btn-primary btn-sm">{toggleTheme ? "Dark Mode" : 'Light Mode'}</p>
                 </div>
             </div>
 
