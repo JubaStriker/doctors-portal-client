@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../../Context/Theme/ThemeProvider';
 
@@ -20,7 +20,7 @@ const Navbar = () => {
     const menuItems = <>
 
         <li><Link to='/home'>Home</Link></li>
-        <li><Link to='/'>Appointment</Link></li>
+        <li><Link to='/appointment'>Appointment</Link></li>
         <li><Link to='/'>About</Link></li>
         <li><Link to='/'>Reviews</Link></li>
         <li><Link to='/login'>Login</Link></li>
