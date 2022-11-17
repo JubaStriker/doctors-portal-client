@@ -1,17 +1,21 @@
-import React from 'react';
 import chair from '../../../assets/images/chair.png';
 import { DayPicker } from 'react-day-picker';
+import chairbg from '../../../assets/images/bg.png'
 
-const AppointmentBanner = () => {
+
+const AppointmentBanner = ({ setSelectedDate, selectedDate }) => {
+
+
     return (
-        <div>
+        <div className='py-10 my-16' style={{ background: `url(${chairbg})` }}>
             <div className="hero my-16">
-                <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="hero-content flex-col justify-evenly lg:flex-row-reverse">
                     <img src={chair} alt="chair" className="w-full lg:w-1/2  rounded-lg shadow-2xl" />
                     <div>
-                        <h1 className="text-5xl font-bold">Box Office News!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="btn btn-primary">Get Started</button>
+                        <DayPicker
+                            mode="single"
+                            selected={selectedDate}
+                            onSelect={setSelectedDate} />
                     </div>
                 </div>
             </div>
