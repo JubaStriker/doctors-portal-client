@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider';
 import { ThemeContext } from '../../../Context/Theme/ThemeProvider';
 
 const Navbar = () => {
 
-    // const [toggleTheme, setToggleTheme] = useState(true)
+    const { user, logOut } = useContext(AuthContext)
 
     const { toggleTheme, setToggleTheme } = useContext(ThemeContext)
 
@@ -17,13 +18,26 @@ const Navbar = () => {
         theme = "dark";
     }
 
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => { console.error(err) })
+    }
+
     const menuItems = <>
 
         <li><Link to='/home'>Home</Link></li>
         <li><Link to='/appointment'>Appointment</Link></li>
         <li><Link to='/'>About</Link></li>
-        <li><Link to='/'>Reviews</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+
+        {user?.uid ?
+            <>
+                <li><Link to='/dashboard'>Dashboard</Link></li>
+                <li><button onClick={handleLogOut}>Sign out</button></li>
+            </>
+            :
+            <li><Link to='/login'>Login</Link></li>
+        }
     </>
 
 

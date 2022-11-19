@@ -18,7 +18,7 @@ const Testimonial = () => {
             </div>
 
             <div className='flex flex-col lg:flex-row gap-5 justify-center items-center'>
-                <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card w- w-72 lg:w-96 bg-base-100 shadow-xl">
                     <div className="card-body">
                         <p>It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content</p>
                     </div>
@@ -30,7 +30,7 @@ const Testimonial = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card w-72 lg:w-96 bg-base-100 shadow-xl">
                     <div className="card-body">
                         <p>It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content</p>
                     </div>
@@ -42,7 +42,7 @@ const Testimonial = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card w-72 lg:w-96 bg-base-100 shadow-xl">
                     <div className="card-body">
                         <p>It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content</p>
                     </div>

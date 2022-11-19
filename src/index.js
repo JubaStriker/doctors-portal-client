@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ThemeContextProvider from './Context/Theme/ThemeProvider';
 import 'react-day-picker/dist/style.css'
+import AuthProvider from './Context/AuthProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeContextProvider>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </ThemeContextProvider>
   </React.StrictMode>
 );

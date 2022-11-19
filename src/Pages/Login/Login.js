@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Login = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+    const { logIn } = useContext(AuthContext)
+    const [loginError, setLoginError] = useState('')
 
     const handleLogin = data => {
-        console.log(data);
+        setLoginError('')
+        logIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error)
+                setLoginError(error.message)
+            })
+
     }
     return (
         <div className='h-[800px] flex justify-center items-center'>
@@ -37,7 +49,7 @@ const Login = () => {
                     </div>
                     <input className='btn btn-accent w-full' value="Login" type="submit" />
                     <div>
-                        {/* {loginError && <p className='text-red-600'>{loginError}</p>} */}
+                        {loginError && <p className='text-red-600'>{loginError}</p>}
                     </div>
                 </form>
                 <p>New to Doctors Portal <Link className='text-secondary' to="/signup">Create new Account</Link></p>
