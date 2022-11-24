@@ -2,31 +2,39 @@ import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import useToken from '../../hooks/useToekn';
 
 const Login = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const { logIn } = useContext(AuthContext)
-    const [loginError, setLoginError] = useState('')
+    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { signIn } = useContext(AuthContext);
+    const [loginError, setLoginError] = useState('');
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+    const [token] = useToken(loginUserEmail);
     const location = useLocation();
     const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
 
+    if (token) {
+        navigate(from, { replace: true });
+    }
+
     const handleLogin = data => {
-        setLoginError('')
-        logIn(data.email, data.password)
+        console.log(data);
+        setLoginError('');
+        signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate(from, { replace: true })
+                setLoginUserEmail(data.email);
             })
             .catch(error => {
-                console.error(error)
-                setLoginError(error.message)
-            })
-
+                console.log(error.message)
+                setLoginError(error.message);
+            });
     }
+
     return (
         <div className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-7'>
